@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de potência</title>
+    <script src="./mappedInputs.js"></script>
+    <script src="./functionsUtility.js"></script>
+    <script src="./templates.js"></script>
+    <script src="./index.js"></script>
+</head>
+<body>
+    <section>
+        <h1>Calcule outras unidades de medida para seu transdutor com base em potência e resistência</h1>
+    </section>
+    <section>
+        <fieldset>
+            <label for="powerId">Potência RMS:</label>
+            <input type="number" id="powerId">
+        </fieldset>
+        
+        <fieldset>
+            <label for="resistanceId">Resistência:</label>
+            <input type="number" id="resistanceId">
+        </fieldset>
+
+        <fieldset>
+            <label for="dinamicMusicID">Dinâmica musical:</label>
+            <select id="dinamicMusicID" value="3">
+                <option value="3" selected >3</option>
+                <option value="6"  >6</option>
+                <option value="12"  >12</option>
+            </select>
+            <label for="dinamicMusicID" >DB</label>
+        </fieldset>
+
+        <button id="submitButton" type="button">Calcular</button>
+    </section>
+
+    <section class="showResults" >
+    
+    </section>
+</body>
+</html>
