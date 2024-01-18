@@ -4,7 +4,7 @@ function getDinamicMap(value) {
   return {
     3: Math.pow(db_3, 1),
     6: Math.pow(db_3, 2),
-    9: Math.pow(db_3, 2),
+    9: Math.pow(db_3, 3),
     12: Math.pow(db_3, 4),
   }[value];
 }
