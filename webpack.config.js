@@ -19,10 +19,25 @@ const entryPoints = appsNames.split("\n").reduce((acc, currentAppName) => {
 export default {
   entry: entryPoints,
   devtool: isDevelopmentMode ? "source-map" : "eval",
+  mode: isDevelopmentMode ? 'development': 'production',
   output: {
     filename: "[name].bundle.js",
     path: path.resolve("dist"),
     clean: true,
+    publicPath: '/',
+
+  },
+  devServer: {
+    historyApiFallback: true,
+    port: 8081,
+    host: '0.0.0.0',
+    hot: true,
+    // compress: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
