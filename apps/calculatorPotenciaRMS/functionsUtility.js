@@ -4,6 +4,7 @@ function getDinamicMap(value) {
   return {
     3: Math.pow(db_3, 1),
     6: Math.pow(db_3, 2),
+    9: Math.pow(db_3, 2),
     12: Math.pow(db_3, 4),
   }[value];
 }
@@ -36,7 +37,7 @@ function getCurrentByvoltsResistance(volts, resistance) {
   return volts / resistance;
 }
 
-function calculateValuesRMSPeak(powerRMS, resistance, dinamicDB) {
+export function calculateValuesRMSPeak(powerRMS, resistance, dinamicDB) {
   const config = {
     powerRMS,
     // get powerPeak() {

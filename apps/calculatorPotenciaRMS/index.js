@@ -1,3 +1,7 @@
+import { calculateValuesRMSPeak } from './functionsUtility.js';
+import {getInputs} from './mappedInputs.js'
+import { templateService } from './templates.js';
+
 window.addEventListener("DOMContentLoaded", () => {
   const inputs = getInputs();
   const printResults = document.querySelector(".showResults")

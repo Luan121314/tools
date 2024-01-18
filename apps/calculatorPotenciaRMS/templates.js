@@ -36,4 +36,5 @@ class Template {
   }
 }
 
-const templateService = new Template();
+export const templateService = new Template();
+

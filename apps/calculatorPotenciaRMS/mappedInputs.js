@@ -17,3 +17,6 @@ function getInputs(){
     }
 
 }
+
+
+export { getInputs}
