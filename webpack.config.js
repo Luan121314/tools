@@ -4,12 +4,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const isDevelopmentMode = process.env.NODE_ENV == "development";
 
 module.exports = {
-  entry: path.resolve(__dirname, "src", "index.tsx"),
+  entry: {
+    index: [
+      path.resolve(__dirname, "src", "index.tsx"),
+      path.resolve(__dirname, "apps", "calculatorPotenciaRMS","index.tsx")
+    ]
+  },
   devtool: isDevelopmentMode ? "source-map" : "eval",
   mode: isDevelopmentMode ? "development" : "production",
   output: {
-    filename: "[name].js",
-    path: path.resolve("dist"),
+    filename: "bundle.[name].js",
+    path: path.resolve(__dirname, "dist"),
     clean: true,
     publicPath: "/",
   },
