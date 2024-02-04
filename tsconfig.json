@@ -23,5 +23,5 @@
       "src/**/*",
       "apps/**/*"
   ],
-  "exclude": ["node_modules", "apps"]
+  "exclude": ["node_modules"]
 }
