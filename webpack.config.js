@@ -5,7 +5,7 @@ const isDevelopmentMode = process.env.NODE_ENV == "development";
 
 module.exports = {
   entry: {
-    index: [
+    bundle: [
       path.resolve(__dirname, "src", "index.tsx"),
       path.resolve(__dirname, "apps", "calculatorPotenciaRMS","index.tsx")
     ]
@@ -13,13 +13,15 @@ module.exports = {
   devtool: isDevelopmentMode ? "source-map" : "eval",
   mode: isDevelopmentMode ? "development" : "production",
   output: {
-    filename: "bundle.[name].js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: "/",
   },
   devServer: {
-    port: 8081,
+    historyApiFallback: true,
+    open: true,
+    compress: true,
+    hot: true,
     host: "0.0.0.0",
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -44,7 +46,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: path.resolve(__dirname, "src", "index.html"),
     }),
   ],
 };
