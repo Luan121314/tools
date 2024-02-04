@@ -1,6 +1,6 @@
-import { calculateValuesRMSPeak } from './functionsUtility.js';
-import {getInputs} from './mappedInputs.js'
-import { templateService } from './templates.js';
+// import { calculateValuesRMSPeak } from './functionsUtility';
+// import {getInputs} from './mappedInputs'
+// import { templateService } from './templates';
 import AppService from '../../src/services/appService'
 
 // window.addEventListener("DOMContentLoaded", () => {
@@ -37,6 +37,3 @@ import AppService from '../../src/services/appService'
 AppService.appRegister.register('calculePotencia', {name: 'calculo de potência', route:'/calculatorPotenciaRMS'})
 
 console.log('pos registrado', AppService.getApps())
-
-export default null
-
