@@ -1,13 +1,22 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { execSync: exec } = require("child_process");
 
 const isDevelopmentMode = process.env.NODE_ENV == "development";
+
+const appsNameFiles = exec(`ls ${path.resolve(__dirname, "apps")}` , {encoding: 'utf8'}).toString()
+const appNames = appsNameFiles.split("\n").reduce((acc, currentNameApp)=>{
+  if(!currentNameApp) return acc
+
+  return [...acc, path.resolve(__dirname, "apps", currentNameApp,"index.tsx")]
+},  [])
+
 
 module.exports = {
   entry: {
     bundle: [
       path.resolve(__dirname, "src", "index.tsx"),
-      path.resolve(__dirname, "apps", "calculatorPotenciaRMS","index.tsx")
+      ...appNames
     ]
   },
   devtool: isDevelopmentMode ? "source-map" : "eval",
