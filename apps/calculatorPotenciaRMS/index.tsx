@@ -2,7 +2,7 @@
 // import {getInputs} from './mappedInputs'
 // import { templateService } from './templates';
 import React from 'react'
-import AppService from '../../src/services/appService'
+import AppService from 'tools/services/appService'
 
 // window.addEventListener("DOMContentLoaded", () => {
 //   if(Boolean) return

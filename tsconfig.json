@@ -16,7 +16,7 @@
     "target": "ES2015",
     "module": "CommonJS",
     "paths": {
-      "src/*": ["./src/*"]
+      "tools/*": ["./src/*"]
     }
   },
   "include": [

@@ -1,6 +1,5 @@
 import React from "react";
-import  Main  from "./pages/Main";
-import {Routes} from './Routes'
+import {Routes} from 'tools/Routes'
 
 
 interface ColorGroupProps {
@@ -8,7 +7,7 @@ interface ColorGroupProps {
   title?: string;
 }
 
-const App: React.FC<ColorGroupProps> = ({ children, title }) => {
+const App: React.FC<ColorGroupProps> = () => {
   return (
   <Routes/>
   );

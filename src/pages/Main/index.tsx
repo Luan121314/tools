@@ -1,5 +1,5 @@
 import React from 'react'
-import AppService from '../../services/appService'
+import AppService from 'tools/services/appService'
 
 export default function Main(){
 
@@ -13,8 +13,8 @@ export default function Main(){
         </header>
         <section>
             {
-                apps.map(app => {
-                    return <a href={app.route}>{app.name}</a>
+                apps.map((app, index) => {
+                    return <a href={app.route} key={index+app.name} >{app.name}</a>
                 })
             }
         </section>

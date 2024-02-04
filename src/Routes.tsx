@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
-import Main from "./pages/Main";
-import AppService from "./services/appService"
+import Main from "tools/pages/Main";
+import AppService from "tools/services/appService"
 
 
 export function Routes(){
