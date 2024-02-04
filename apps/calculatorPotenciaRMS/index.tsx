@@ -1,6 +1,7 @@
 // import { calculateValuesRMSPeak } from './functionsUtility';
 // import {getInputs} from './mappedInputs'
 // import { templateService } from './templates';
+import React from 'react'
 import AppService from '../../src/services/appService'
 
 // window.addEventListener("DOMContentLoaded", () => {
@@ -33,7 +34,15 @@ import AppService from '../../src/services/appService'
 //   }); 
 // });
 
+const ComponentApp:React.FC = () => {
+    return(
+        <div className="container-app">
+            <h1>App 01</h1>
+        </div>
+    )
+}
 
-AppService.appRegister.register('calculePotencia', {name: 'calculo de potência', route:'/calculatorPotenciaRMS'})
+
+AppService.appRegister.register('calculePotencia', {name: 'calculo de potência', route:'/calculatorPotenciaRMS', component: ComponentApp})
 
 console.log('pos registrado', AppService.getApps())

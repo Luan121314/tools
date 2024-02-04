@@ -3,7 +3,7 @@ import { Registry } from "./Registry"
 
 export type AppServiceType = {
     name: string
-    // component: React.Component
+    component: React.FC
     route: string
 
 }
