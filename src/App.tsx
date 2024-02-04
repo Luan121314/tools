@@ -1,8 +1,6 @@
 import React from "react";
 import  Main  from "./pages/Main/index";
 
-import "../apps"
-
 
 interface ColorGroupProps {
   children?: React.ReactNode;
