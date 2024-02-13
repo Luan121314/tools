@@ -42,7 +42,12 @@ const ComponentApp:React.FC = () => {
     )
 }
 
+const configApp = {
+    name: 'Cálculo de potência',
+    route:'/calculatorPotenciaRMS',
+    component: ComponentApp,
+    info: "Obtenha valores de grandezas elétricas, calculando valor RMS e pico aplicado em alto falantes ou amplificadores."
+}
 
-AppService.appRegister.register('calculePotencia', {name: 'calculo de potência', route:'/calculatorPotenciaRMS', component: ComponentApp})
 
-console.log('pos registrado', AppService.getApps())
+AppService.appRegister.register('calculePotencia', configApp)

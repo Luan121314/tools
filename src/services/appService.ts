@@ -5,6 +5,7 @@ export type AppServiceType = {
     name: string
     component: React.FC
     route: string
+    info?: string
 
 }
 

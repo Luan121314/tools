@@ -22,6 +22,6 @@
   "include": [
       "src/**/*",
       "apps/**/*"
-  ],
+, "styled.d.ts"  ],
   "exclude": ["node_modules"]
 }
