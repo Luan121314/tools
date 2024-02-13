@@ -3,10 +3,11 @@ import styled from "styled-components";
 import AppService from "tools/services/appService";
 import { AppsList } from "./AppsList";
 import { useGoogleAnalytics } from "tools/services/hooks/useGoogleAnalytics";
+import { CONSTANTS } from "tools/Contants";
 
 export default function Main() {
   const apps = AppService.getApps();
-  useGoogleAnalytics();
+  useGoogleAnalytics(CONSTANTS.googleAnalytics);
 
   return (
     <MainContainer className="main">
@@ -41,16 +42,12 @@ const MainContainer = styled.div`
       @media only screen and (max-width: 600px) {
         font-size: ${(props) => props.theme["large-size"]};
 
-        &.category-name{
-            display: none;
+        &.category-name {
+          display: none;
         }
-
-    }
-
+      }
     }
     border-bottom: 1px solid ${(props) => props.theme["gray-100"]};
-
-   
   }
 
   header .name {

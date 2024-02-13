@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-export const useGoogleAnalytics = () => {
+export const useGoogleAnalytics = (id: string) => {
   const isDevelopment = process.env.NODE_ENV === "development";
 
   useEffect(() => {
@@ -8,7 +8,7 @@ export const useGoogleAnalytics = () => {
 
     const script = document.createElement("script");
 
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-HN9LHZ1WVG";
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
     script.async = true;
 
     document.head.appendChild(script);
@@ -30,7 +30,7 @@ export const useGoogleAnalytics = () => {
    }
    gtag("js", new Date());
 
-   gtag("config", "G-HN9LHZ1WVG");
+   gtag("config", "${id}");
    `;
 
     document.head.appendChild(script);
