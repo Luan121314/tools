@@ -4,32 +4,28 @@ import AppService from "tools/services/appService";
 import { AppsList } from "./AppsList";
 import { useGoogleAnalytics } from "tools/services/hooks/useGoogleAnalytics";
 import { CONSTANTS } from "tools/Contants";
+import { MainShape } from "tools/components/MainShape";
 
 export default function Main() {
   const apps = AppService.getApps();
   useGoogleAnalytics(CONSTANTS.googleAnalytics);
 
   return (
-    <MainContainer className="main">
-      <header>
-        <label className="name">LNTools</label>
-        <label className="category-name"> Ferramentas genéricas</label>
-      </header>
-      <section>
-        <AppsList apps={apps} />
-      </section>
-    </MainContainer>
+    <MainContainerWapper>
+      <MainShape>
+        <header>
+          <label className="name">LNTools</label>
+          <label className="category-name"> Ferramentas genéricas</label>
+        </header>
+        <section>
+          <AppsList apps={apps} />
+        </section>
+      </MainShape>
+    </MainContainerWapper>
   );
 }
 
-const MainContainer = styled.div`
-  background-color: ${(props) => props.theme["blue-400"]};
-  width: 100vw;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
+const MainContainerWapper = styled.div`
   header {
     text-align: center;
     width: 100vw;
