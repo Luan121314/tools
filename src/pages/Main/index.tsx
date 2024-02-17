@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import AppService from "tools/services/appService";
 import { AppsList } from "./AppsList";
-import { useGoogleAnalytics } from "tools/services/hooks/useGoogleAnalytics";
 import { CONSTANTS } from "tools/Contants";
 import { MainShape } from "tools/components/MainShape";
+import { useTitle } from "tools/services/hooks/useTitle";
 
 export default function Main() {
   const apps = AppService.getApps();
-  useGoogleAnalytics(CONSTANTS.googleAnalytics);
+  useTitle("LN tools")
 
   return (
     <MainContainerWapper>

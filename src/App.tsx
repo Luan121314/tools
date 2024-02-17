@@ -1,6 +1,9 @@
 import React from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Routes } from "tools/Routes";
+import { useGoogleAnalytics } from "tools/services/hooks/useGoogleAnalytics";
+import { CONSTANTS } from "./Contants";
+
 
 interface ColorGroupProps {
   children?: React.ReactNode;
@@ -8,6 +11,8 @@ interface ColorGroupProps {
 }
 
 const App: React.FC<ColorGroupProps> = () => {
+  useGoogleAnalytics(CONSTANTS.googleAnalytics)
+  
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
