@@ -10,7 +10,7 @@ interface ColorGroupProps {
 const App: React.FC<ColorGroupProps> = () => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle/>
+      <GlobalStyle />
       <Routes />
     </ThemeProvider>
   );
@@ -24,7 +24,7 @@ export const theme = {
   "blue-300": "#004080",
   "blue-400": "#002147",
   "blue-500": "#001F3F",
-  
+
   "gray-100": "#DDDDDD",
   "gray-200": "#A0A0A0",
   "gray-300": "#999999",
@@ -45,7 +45,7 @@ export const theme = {
   "purple-100": "#800080",
   "pink-100": "#FF69B4",
 
-  "black": "#000000",
+  black: "#000000",
   white: "#FFFFFF",
 
   "small-size": "14px",
@@ -54,13 +54,33 @@ export const theme = {
   "extra-size": "29px",
   "super-size": "36px",
 
-  "border-radius": "5px"
+  "border-radius": "5px",
+
+  "small-padding": "5px",
+  "middle-padding": "10px",
+  "large-padding": "20px",
+
+  "small-margin": "5px",
+  "middle-margin": "10px",
+  "large-margin": "20px",
+
+  breakPoints:{
+    mobile: "600px"
+  }
+,
 };
 
 const GlobalStyle = createGlobalStyle`
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
   body {
     margin: 0;
     font-family: Poppins, regular;
     font-weight: 400;
   }
-`
+`;

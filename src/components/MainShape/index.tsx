@@ -6,7 +6,11 @@ type MainType = {
 };
 
 export const MainShape: React.FC<MainType> = (props) => {
-  return <MainContainer className="main-shape">{props.children}</MainContainer>;
+  return (
+    <MainContainer className="main-shape">
+      {props.children}
+    </MainContainer>
+  );
 };
 
 const MainContainer = styled.div`
@@ -16,4 +20,5 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow-y: visible;
 `;

@@ -38,7 +38,7 @@ function getCurrentByvoltsResistance(volts: number, resistance: number) {
   return volts / resistance;
 }
 
-export function calculateValuesRMSPeak(powerRMS: number, resistance: number, dinamicDB: number) {
+export function calculateValuesRMSPeak(powerRMS: number, resistance: number, dinamicDB: number): calculateValuesRMSPeakType{
   const config = {
     powerRMS,
     // get powerPeak() {
@@ -79,3 +79,6 @@ export function calculateValuesRMSPeak(powerRMS: number, resistance: number, din
 function formatNumber(value: number){
     return Number(value).toFixed(3)
 }
+
+
+export type calculateValuesRMSPeakType =  { rms: { volt: string; current: string; resistance: number; power: string; }; peak: { volt: string; current: string; resistance: number; power: string; }; }
