@@ -48,6 +48,7 @@ export const theme = {
   black: "#000000",
   white: "#FFFFFF",
 
+  "micro-size": "12px",
   "small-size": "14px",
   "medium-size": "17px",
   "large-size": "24px",

@@ -18,6 +18,7 @@ export default function Main() {
           <label className="category-name"> Ferramentas genéricas</label>
         </header>
         <section>
+          <span className="info" >Escolha um app, e aperte em ver para utilizar.</span>
           <AppsList apps={apps} />
         </section>
       </MainShape>
@@ -45,6 +46,12 @@ const MainContainerWapper = styled.div`
     }
     border-bottom: 1px solid ${(props) => props.theme["gray-100"]};
   }
+
+  .info{
+      font-size: ${props => props.theme["micro-size"]};
+      color: ${(props) => props.theme["gray-100"]};
+      padding: ${props => props.theme["small-padding"]}
+    }
 
   header .name {
     color: ${(props) => props.theme["gray-100"]};
