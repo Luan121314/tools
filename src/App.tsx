@@ -65,7 +65,8 @@ export const theme = {
   "large-margin": "20px",
 
   breakPoints:{
-    mobile: "600px"
+    tablet: "600px",
+    smartphone: "400px"
   }
 ,
 };
