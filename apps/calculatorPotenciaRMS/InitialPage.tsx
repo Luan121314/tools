@@ -55,7 +55,7 @@ export const InitialPage: React.FC = () => {
         {
           name: "Potência",
           value: Number(resultFromService.rms.power),
-          suffix: "A",
+          suffix: "W",
         },
         {
           name: "Resistência",
@@ -77,7 +77,7 @@ export const InitialPage: React.FC = () => {
         {
           name: "Potência",
           value: Number(resultFromService.peak.power),
-          suffix: "A",
+          suffix: "W",
         },
         {
           name: "Resistência",
@@ -151,7 +151,7 @@ const Form = styled.form`
   width: 50%;
   max-width: 500px;
 
-  @media only screen and (max-width: ${(props) => props.theme.breakPoints.mobile}) {
+  @media only screen and (max-width: ${(props) => props.theme.breakPoints.tablet}) {
     width: 100%;
     border: none;
 
@@ -180,7 +180,7 @@ const TitleApp = styled.div`
     padding: ${(props) => props.theme["middle-padding"]};
   }
 
-  @media only screen and (max-width: ${(props) => props.theme.breakPoints.mobile}) {
+  @media only screen and (max-width: ${(props) => props.theme.breakPoints.tablet}) {
     span.principal {
       font-size: ${(props) => props.theme["medium-size"]};
     }
@@ -204,12 +204,16 @@ const ResultLayer = styled.div`
   width: 100%;
   padding-top: ${(props) => props.theme["middle-padding"]};
 
-  @media only screen and (max-width: ${(props) => props.theme.breakPoints.mobile}) {
+  @media only screen and (max-width: ${(props) => props.theme.breakPoints.smartphone}) {
     & {
       flex-direction: column;
-      align-items: baseline;
+      align-items: center;
       padding: ${(props) => props.theme["middle-padding"]};
       padding-left: ${(props) => props.theme["large-padding"]};
+    }
+
+    & article {
+      width: 100%;
     }
   }
 `;
