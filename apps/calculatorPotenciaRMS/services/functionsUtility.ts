@@ -1,42 +1,44 @@
 const db_3 = Math.sqrt(2);
-function getDinamicMap(value) {
-
-  return {
+function getDinamicMap(value: number ): number {
+  const dinamicDBMap = {
     3: Math.pow(db_3, 1),
     6: Math.pow(db_3, 2),
+    9: Math.pow(db_3, 3),
     12: Math.pow(db_3, 4),
-  }[value];
+  }
+
+  return dinamicDBMap[value]
 }
 
-function getVoltByPowerResistance(power, resistance) {
+function getVoltByPowerResistance(power: number, resistance: number) {
   return Math.sqrt(power * resistance);
 }
 
-function getPowerRMSFromPeak(powerRMS, dinamicDB = 3) {
+function getPowerRMSFromPeak(powerRMS: number, dinamicDB = 3) {
   return powerRMS / getDinamicMap(dinamicDB);
 }
 
-function getPowerPeakFromPowerRMS(powerRMS, dinamicDB = 3) {
+function getPowerPeakFromPowerRMS(powerRMS: number, dinamicDB = 3) {
   return powerRMS * getDinamicMap(dinamicDB);
 }
 
-function getVoltRMSFromVoltsPeak(volts, dinamicDB = 3) {
+function getVoltRMSFromVoltsPeak(volts: number, dinamicDB = 3) {
   return volts / getDinamicMap(dinamicDB);
 }
 
-function getVoltPeakFromVoltsRMS(volts, dinamicDB = 3) {
+function getVoltPeakFromVoltsRMS(volts: number, dinamicDB = 3) {
   return volts * getDinamicMap(dinamicDB);
 }
 
-function getPowerPeakFromVoltRMS(voltRMS, dinamicDB, resistance) {
-  return Math.pow(getVoltPeakFromRMS(voltRMS, dinamicDB), 2) / resistance;
-}
+// function getPowerPeakFromVoltRMS(voltRMS, dinamicDB, resistance) {
+//   return Math.pow(getVoltPeakFromRMS(voltRMS, dinamicDB), 2) / resistance;
+// }
 
-function getCurrentByvoltsResistance(volts, resistance) {
+function getCurrentByvoltsResistance(volts: number, resistance: number) {
   return volts / resistance;
 }
 
-function calculateValuesRMSPeak(powerRMS, resistance, dinamicDB) {
+export function calculateValuesRMSPeak(powerRMS: number, resistance: number, dinamicDB: number): calculateValuesRMSPeakType{
   const config = {
     powerRMS,
     // get powerPeak() {
@@ -56,7 +58,7 @@ function calculateValuesRMSPeak(powerRMS, resistance, dinamicDB) {
   };
 
   const voltsPeak = getVoltPeakFromVoltsRMS(
-    rmsValue.volt,
+    Number(rmsValue.volt),
     dinamicDB
   );
   const currentPeak = getCurrentByvoltsResistance(voltsPeak, config.resistance);
@@ -74,6 +76,9 @@ function calculateValuesRMSPeak(powerRMS, resistance, dinamicDB) {
   }
 }
 
-function formatNumber(value){
+function formatNumber(value: number){
     return Number(value).toFixed(3)
 }
+
+
+export type calculateValuesRMSPeakType =  { rms: { volt: string; current: string; resistance: number; power: string; }; peak: { volt: string; current: string; resistance: number; power: string; }; }
