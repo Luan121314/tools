@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const Header:React.FC<{}> = ()=>{
     return <HearderContainer>
        <Link className='link' to="/" >
-        <span className='principal-name' >LN tools</span>
+        <h2 className='principal-name' >LN tools</h2>
        </Link> 
     </HearderContainer>
 }

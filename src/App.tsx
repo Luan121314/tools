@@ -40,18 +40,20 @@ export const theme = {
 
   "green-100": "#4CAF50",
   "green-200": "#008000",
-
+  
   "red-100": "#E74C3C",
   "red-200": "#FF0000",
-
+  
   "yellow-100": "#FFD700",
   "yellow-200": "#FFA500",
-
+  
   "purple-100": "#800080",
   "pink-100": "#FF69B4",
-
+  
   black: "#000000",
   white: "#FFFFFF",
+  
+  "whatsapp-icon-100": "#25D366",
 
   "micro-size": "12px",
   "small-size": "14px",
@@ -69,6 +71,10 @@ export const theme = {
   "small-margin": "5px",
   "middle-margin": "10px",
   "large-margin": "20px",
+
+  "small-icon-size": 20,
+  "middle-icon-size": 30,
+  "large-icon-size": 60,
 
   breakPoints:{
     tablet: "600px",

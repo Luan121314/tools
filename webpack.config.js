@@ -19,7 +19,7 @@ module.exports = {
       ...appNames
     ]
   },
-  devtool: isDevelopmentMode ? "source-map" : "eval",
+  devtool: isDevelopmentMode ? "source-map" : false,
   mode: isDevelopmentMode ? "development" : "production",
   output: {
     filename: "[name].bundle.js",

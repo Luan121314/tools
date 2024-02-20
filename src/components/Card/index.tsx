@@ -10,7 +10,7 @@ type CardType = {
 export const Card: React.FC<CardType> = ({ title, children }) => {
   return (
     <CardContainer className="card-container">
-      <div className="title">{title}</div>
+      <h3 className="title">{title}</h3>
       <div className="content">{children}</div>
     </CardContainer>
   );
@@ -46,6 +46,7 @@ const CardContainer = styled.article`
     border-radius: ${(props) => props.theme["border-radius"]}
       ${(props) => props.theme["border-radius"]} 0 0;
     font-weight: 600;
+    font-size: ${props => props.theme["medium-size"]};
   }
 
   .content {

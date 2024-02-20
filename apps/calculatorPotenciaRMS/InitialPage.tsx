@@ -5,6 +5,8 @@ import { FormGroup } from "tools/components/FormGroup";
 import { calculateValuesRMSPeak } from "./services/functionsUtility";
 import { ShowUnitGroup, ShowUnitGroupType } from "./components/UnitGroup";
 import { useTitle } from "tools/services/hooks/useTitle";
+import { SharedContent } from "./components/SharedContent";
+import { buildTemplateStringShared } from "./helpers";
 
 const selectOptions = [
   {
@@ -21,16 +23,19 @@ const selectOptions = [
   },
 ];
 
+export type ResultType = {
+  rms: ShowUnitGroupType["units"];
+  peak: ShowUnitGroupType["units"];
+} 
+
 export const InitialPage: React.FC = () => {
   const [power, setPower] = useState(0);
   const [resistance, setresistance] = useState(1);
   const [crestFactor, setCrestFactor] = useState(3);
-  const [units, setUnits] = useState<{
-    rms: ShowUnitGroupType["units"];
-    peak: ShowUnitGroupType["units"];
-  } | null>(null);
+  const [units, setUnits] = useState<ResultType | null>(null);
 
   useTitle("Potência RMS e Pico");
+  
 
   function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
@@ -92,11 +97,11 @@ export const InitialPage: React.FC = () => {
     <>
       <Container>
         <TitleApp>
-          <span className="principal">Cálcular potência RMS e de pico</span>
-          <span className="description">
+          <h2 className="principal">Cálcular potência RMS e de pico</h2>
+          <h3 className="description">
             Insira os valores de potência RMS e resistência para obter demais
             grandezas elétricas para seu alto falante ou amplificador.
-          </span>
+          </h3>
         </TitleApp>
         <Form onSubmit={handleSubmit}>
           <FormGroup
@@ -139,9 +144,12 @@ export const InitialPage: React.FC = () => {
         {units?.rms ? <ShowUnitGroup title="RMS" units={units.rms} /> : null}
         {units?.peak ? <ShowUnitGroup title="Peak" units={units.peak} /> : null}
       </ResultLayer>
+     { units?.rms && <SharedContent text={buildTemplateStringShared(units)} />}
     </>
   );
 };
+
+
 
 const Form = styled.form`
   padding: ${(props) => props.theme["small-padding"]};
@@ -170,11 +178,11 @@ const TitleApp = styled.div`
   margin: ${(props) => props.theme["middle-margin"]};
   margin-bottom: ${(props) => props.theme["large-margin"]};
 
-  span.principal {
-    font-size: ${(props) => props.theme["large-size"]};
+  .principal {
+    font-size: ${(props) => props.theme["medium-size"]};
     font-weight: 600;
   }
-  span.description {
+  .description {
     text-align: center;
     font-size: ${(props) => props.theme["small-size"]};
     padding: ${(props) => props.theme["middle-padding"]};
