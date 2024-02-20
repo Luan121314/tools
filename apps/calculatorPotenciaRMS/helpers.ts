@@ -16,7 +16,7 @@ ${buildString(result.rms).join('\n')}
 *Peak*
 ${buildString(result.peak).join('\n')}
 
-`;
+by https://lntools.com.br`;
 
   return str;
 }
