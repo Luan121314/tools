@@ -1,5 +1,6 @@
 import React, { FormEvent, useState } from "react";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import { Button } from "tools/components/Button/Button";
 import { FormGroup } from "tools/components/FormGroup";
 import { calculateValuesRMSPeak } from "./services/functionsUtility";
@@ -7,6 +8,7 @@ import { ShowUnitGroup, ShowUnitGroupType } from "./components/UnitGroup";
 import { useTitle } from "tools/services/hooks/useTitle";
 import { SharedContent } from "./components/SharedContent";
 import { buildTemplateStringShared } from "./helpers";
+import { TagHeadManager } from "tools/components/TagHeadManager";
 
 const selectOptions = [
   {
@@ -26,7 +28,19 @@ const selectOptions = [
 export type ResultType = {
   rms: ShowUnitGroupType["units"];
   peak: ShowUnitGroupType["units"];
-} 
+};
+
+// function TagHeadManager() {
+//   return (
+//     <Helmet>
+//       <meta charSet="utf-8" />
+//       <title>Calcular potência RMS e Pico</title>
+//       <meta name="description" content="Obtenha valores de grandezas elétricas, calculando valor RMS e pico aplicado em alto falantes ou amplificadores." />
+//       <meta name="keywords" content="Aplicação de potência, calculo de potência, RMS, Pico"></meta>
+//       <link rel = "canonical" href = "https://lntools.com.br" /> 
+//     </Helmet>
+//   );
+// }
 
 export const InitialPage: React.FC = () => {
   const [power, setPower] = useState(0);
@@ -34,8 +48,7 @@ export const InitialPage: React.FC = () => {
   const [crestFactor, setCrestFactor] = useState(3);
   const [units, setUnits] = useState<ResultType | null>(null);
 
-  useTitle("Potência RMS e Pico");
-  
+  // useTitle("Potência RMS e Pico");
 
   function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
@@ -95,6 +108,7 @@ export const InitialPage: React.FC = () => {
 
   return (
     <>
+      <TagHeadManager title="Calcular potência RMS e Pico" description="Obtenha valores de grandezas elétricas, calculando valor RMS e pico aplicado em alto falantes ou amplificadores." keywords={["Aplicação de potência", "calculo de potência", "RMS", "Pico"]} />
       <Container>
         <TitleApp>
           <h2 className="principal">Cálcular potência RMS e de pico</h2>
@@ -144,12 +158,10 @@ export const InitialPage: React.FC = () => {
         {units?.rms ? <ShowUnitGroup title="RMS" units={units.rms} /> : null}
         {units?.peak ? <ShowUnitGroup title="Peak" units={units.peak} /> : null}
       </ResultLayer>
-     { units?.rms && <SharedContent text={buildTemplateStringShared(units)} />}
+      {units?.rms && <SharedContent text={buildTemplateStringShared(units)} />}
     </>
   );
 };
-
-
 
 const Form = styled.form`
   padding: ${(props) => props.theme["small-padding"]};

@@ -5,6 +5,7 @@ import { AppsList } from "./AppsList";
 import { CONSTANTS } from "tools/Contants";
 import { MainShape } from "tools/components/MainShape";
 import { useTitle } from "tools/services/hooks/useTitle";
+import { TagHeadManager } from "tools/components/TagHeadManager";
 
 export default function Main() {
   const apps = AppService.getApps();
@@ -12,6 +13,7 @@ export default function Main() {
 
   return (
     <MainContainerWapper>
+      <TagHeadManager title="LN tools" description="Diversos app, com finalidades diferentes"  />
       <MainShape>
         <header>
           <label className="name">LNTools</label>
