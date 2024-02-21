@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import AppService from "tools/services/appService";
 import { AppsList } from "./AppsList";
-import { CONSTANTS } from "tools/Contants";
 import { MainShape } from "tools/components/MainShape";
 import { TagHeadManager } from "tools/components/TagHeadManager";
 

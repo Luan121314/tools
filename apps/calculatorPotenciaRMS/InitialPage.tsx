@@ -31,17 +31,6 @@ export type ResultType = {
   peak: ShowUnitGroupType["units"];
 };
 
-// function TagHeadManager() {
-//   return (
-//     <Helmet>
-//       <meta charSet="utf-8" />
-//       <title>Calcular potência RMS e Pico</title>
-//       <meta name="description" content="Obtenha valores de grandezas elétricas, calculando valor RMS e pico aplicado em alto falantes ou amplificadores." />
-//       <meta name="keywords" content="Aplicação de potência, calculo de potência, RMS, Pico"></meta>
-//       <link rel = "canonical" href = "https://lntools.com.br" /> 
-//     </Helmet>
-//   );
-// }
 
 export const InitialPage: React.FC = () => {
   const [power, setPower] = useState(0);
@@ -49,7 +38,6 @@ export const InitialPage: React.FC = () => {
   const [crestFactor, setCrestFactor] = useState(3);
   const [units, setUnits] = useState<ResultType | null>(null);
 
-  // useTitle("Potência RMS e Pico");
 
   function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
