@@ -4,23 +4,30 @@ import AppService from "tools/services/appService";
 import { AppsList } from "./AppsList";
 import { CONSTANTS } from "tools/Contants";
 import { MainShape } from "tools/components/MainShape";
-import { useTitle } from "tools/services/hooks/useTitle";
 import { TagHeadManager } from "tools/components/TagHeadManager";
 
 export default function Main() {
   const apps = AppService.getApps();
-  useTitle("LN tools")
+
+  const appTitles = AppService.getAppTitles();
 
   return (
     <MainContainerWapper>
-      <TagHeadManager title="LN tools" description="Diversos app, com finalidades diferentes"  />
+      <TagHeadManager
+        title="LN tools"
+        description="Diversos app, com finalidades diferentes"
+        isMainPage
+        keywords={appTitles}
+      />
       <MainShape>
         <header>
           <label className="name">LNTools</label>
           <label className="category-name"> Ferramentas genéricas</label>
         </header>
         <section>
-          <span className="info" >Escolha um app, e aperte em ver para utilizar.</span>
+          <span className="info">
+            Escolha um app, e aperte em ver para utilizar.
+          </span>
           <AppsList apps={apps} />
         </section>
       </MainShape>
@@ -49,11 +56,11 @@ const MainContainerWapper = styled.div`
     border-bottom: 1px solid ${(props) => props.theme["gray-100"]};
   }
 
-  .info{
-      font-size: ${props => props.theme["micro-size"]};
-      color: ${(props) => props.theme["gray-100"]};
-      padding: ${props => props.theme["small-padding"]}
-    }
+  .info {
+    font-size: ${(props) => props.theme["micro-size"]};
+    color: ${(props) => props.theme["gray-100"]};
+    padding: ${(props) => props.theme["small-padding"]};
+  }
 
   header .name {
     color: ${(props) => props.theme["gray-100"]};

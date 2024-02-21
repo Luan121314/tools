@@ -14,12 +14,13 @@ const ComponentApp:React.FC = () => {
     )
 }
 
-const configApp = {
-    name: 'Cálculo de potência',
-    route:'/calculatorPotenciaRMS',
+export const CONFIG_APP = {
+    name: '"Calcular potência RMS e Pico"',
+    route:'/calculatorPowerRMSPEAK',
     component: ComponentApp,
-    info: "Obtenha valores de grandezas elétricas, calculando valor RMS e pico aplicado em alto falantes ou amplificadores."
+    description: "Obtenha valores de grandezas elétricas, calculando valor RMS e pico aplicado em alto falantes ou amplificadores.",
+    keywords:["Aplicação de potência", "calculo de potência", "RMS", "Pico", "valor eficaz", "Análise de Potência", "Potência de Áudio", "Potência de Amplificação para Automóveis", "Valor Máximo de Saída"]
 }
 
 
-AppService.appRegister.register('calculePotencia', configApp)
+AppService.appRegister.register('calculePotencia', CONFIG_APP)

@@ -16,7 +16,7 @@ export const AppsList:React.FC<AppsListType> = ({apps}) => {
         {apps.map((app, index) => {
             return (
                 <Card title={app.name} key={index + app.name}>
-                {app.info ? <Content>{app.info}</Content> : null}
+                {app.description ? <Content>{app.description}</Content> : null}
                 <NavbarLink to={app.route} key={index + app.name}>
                   Ver
                 </NavbarLink>

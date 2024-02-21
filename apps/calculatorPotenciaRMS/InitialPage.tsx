@@ -9,6 +9,7 @@ import { useTitle } from "tools/services/hooks/useTitle";
 import { SharedContent } from "./components/SharedContent";
 import { buildTemplateStringShared } from "./helpers";
 import { TagHeadManager } from "tools/components/TagHeadManager";
+import { CONFIG_APP } from ".";
 
 const selectOptions = [
   {
@@ -108,7 +109,7 @@ export const InitialPage: React.FC = () => {
 
   return (
     <>
-      <TagHeadManager title="Calcular potência RMS e Pico" description="Obtenha valores de grandezas elétricas, calculando valor RMS e pico aplicado em alto falantes ou amplificadores." keywords={["Aplicação de potência", "calculo de potência", "RMS", "Pico"]} />
+      <TagHeadManager title={CONFIG_APP.name} description={CONFIG_APP.description} keywords={CONFIG_APP.keywords} />
       <Container>
         <TitleApp>
           <h2 className="principal">Cálcular potência RMS e de pico</h2>
