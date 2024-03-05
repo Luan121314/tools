@@ -30,8 +30,9 @@ export const InputRadioText: React.FC<InputRadioTextType> = ({
             name={props.name}
             checked={props.valueRadio === radio.value}
             onChange={() => onChangeRadio(radio.value)}
+            id={"radio" + radio.value}
           />
-          <label htmlFor={"radio" + props.name} className="input-label">
+          <label htmlFor={"radio" + radio.value} className="input-label">
             {radio.label}{" "}
           </label>
         </div>
