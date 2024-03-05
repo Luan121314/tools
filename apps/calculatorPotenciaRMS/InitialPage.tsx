@@ -30,6 +30,7 @@ const selectOptions = [
 export type ResultType = {
   rms: ShowUnitGroupType["units"];
   peak: ShowUnitGroupType["units"];
+  crestFactor: number
 };
 
 
@@ -51,6 +52,7 @@ export const InitialPage: React.FC = () => {
     );
 
     setUnits({
+      crestFactor: crestFactor,
       rms: [
         {
           name: "Tensão",

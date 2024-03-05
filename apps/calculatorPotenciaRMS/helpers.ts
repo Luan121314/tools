@@ -9,6 +9,7 @@ export function buildTemplateStringShared(result: ResultType) {
 
   const str = `
   *Resultado de potência RMS e de pico*
+   Dinâmica musical: ${result.crestFactor} db
 
 *RMS*
 ${buildString(result.rms).join('\n')}
