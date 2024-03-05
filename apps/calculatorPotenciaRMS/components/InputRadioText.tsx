@@ -22,9 +22,9 @@ export const InputRadioText: React.FC<InputRadioTextType> = ({
   function RenderRadioInputs() {
     if (!props.radiosButtons?.length) return null;
 
-    const Radios = props.radiosButtons?.map((radio) => {
+    const Radios = props.radiosButtons?.map((radio, index) => {
       return (
-        <div className="radio-item">
+        <div className="radio-item" key={props.name+index}>
           <input
             type="radio"
             name={props.name}

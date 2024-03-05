@@ -133,6 +133,7 @@ export const InitialPage: React.FC = () => {
               value={power}
               type="text"
               placeholder="2000w"
+              required
             />
 
           <FormGroup
@@ -143,7 +144,7 @@ export const InitialPage: React.FC = () => {
             value={resistance}
             onChange={(ev=> setresistance(ev.target.value))}
             placeholder="2R"
-
+            required
           />
 
           <FormGroup
