@@ -35,8 +35,8 @@ export type ResultType = {
 
 
 export const InitialPage: React.FC = () => {
-  const [power, setPower] = useState(0);
-  const [resistance, setresistance] = useState(1);
+  const [power, setPower] = useState("");
+  const [resistance, setresistance] = useState("");
   const [powerType, setPowerType] = useState('rms');
   const [crestFactor, setCrestFactor] = useState(3);
   const [units, setUnits] = useState<ResultType | null>(null);
@@ -44,9 +44,14 @@ export const InitialPage: React.FC = () => {
 
   function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
+
+    const powerValid = !isNaN(Number(power)) || Number(power) <= 0.1 ? Number(power) : 1
+    const resistanceValid = !isNaN(Number(resistance)) || Number(resistance) <= 0.1  ? Number(resistance) : 1
+
+
     const resultFromService = calculateValuesRMSPeak(
-      power,
-      resistance,
+      powerValid,
+      resistanceValid,
       crestFactor,
       powerType
     );
@@ -100,6 +105,7 @@ export const InitialPage: React.FC = () => {
     });
   }
 
+
   return (
     <>
       <TagHeadManager title={CONFIG_APP.name} description={CONFIG_APP.description} keywords={CONFIG_APP.keywords} />
@@ -123,20 +129,21 @@ export const InitialPage: React.FC = () => {
                 {label: "RMS", value: "rms"},
                 {label: "Pico", value: "pico"},
               ]}
-              onChange={(ev)=>setPower(Number(ev.target.value ?? 0))}
+              onChange={(ev=> setPower(ev.target.value))}
               value={power}
-              type="number"
-              min={0}
+              type="text"
+              placeholder="2000w"
             />
 
           <FormGroup
             name="Resistência"
             label="Resistência:"
             suffix="Ohms"
-            type="number"
-            min="0"
+            type="text"
             value={resistance}
-            onChange={(e) => setresistance(Number(e.target.value))}
+            onChange={(ev=> setresistance(ev.target.value))}
+            placeholder="2R"
+
           />
 
           <FormGroup
