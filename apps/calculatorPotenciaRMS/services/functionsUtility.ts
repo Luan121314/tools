@@ -1,13 +1,13 @@
 const db_3 = Math.sqrt(2);
-function getDinamicMap(value: number ): number {
+function getDinamicMap(value: number): number {
   const dinamicDBMap = {
     3: Math.pow(db_3, 1),
     6: Math.pow(db_3, 2),
     9: Math.pow(db_3, 3),
     12: Math.pow(db_3, 4),
-  }
+  };
 
-  return dinamicDBMap[value]
+  return dinamicDBMap[value];
 }
 
 function getVoltByPowerResistance(power: number, resistance: number) {
@@ -38,47 +38,73 @@ function getCurrentByvoltsResistance(volts: number, resistance: number) {
   return volts / resistance;
 }
 
-export function calculateValuesRMSPeak(powerRMS: number, resistance: number, dinamicDB: number): calculateValuesRMSPeakType{
+export function calculateValuesRMSPeak(
+  powerRMS: number,
+  resistance: number,
+  dinamicDB: number,
+  powerType: string
+): calculateValuesRMSPeakType {
   const config = {
     powerRMS,
-    // get powerPeak() {
-    //   return this.powerRMS * getDinamicMap(dinamicDB);
-    // },
     resistance,
   };
 
-  const voltsRMS = getVoltByPowerResistance(config.powerRMS, config.resistance);
-  const currentRMS = getCurrentByvoltsResistance(voltsRMS, config.resistance);
+  const volts = getVoltByPowerResistance(config.powerRMS, config.resistance);
+  const current = getCurrentByvoltsResistance(volts, config.resistance);
+
+  if (powerType === "pico") {
+    const peakValue = {
+      volt: formatNumber(volts),
+      current: formatNumber(current),
+      resistance: config.resistance,
+      power: formatNumber(config.powerRMS),
+    };
+
+    const voltRMS = getVoltRMSFromVoltsPeak(volts, dinamicDB);
+    const currentRMS = getCurrentByvoltsResistance(voltRMS, resistance);
+    const powerRMS = formatNumber(voltRMS * currentRMS);
+
+    const rmsValue = {
+      volt: formatNumber(voltRMS),
+      current: formatNumber(currentRMS),
+      resistance: resistance,
+      power: powerRMS,
+    };
+
+    return {
+      rms: rmsValue,
+      peak: peakValue,
+    };
+  }
 
   const rmsValue = {
-    volt: formatNumber(voltsRMS),
-    current: formatNumber(currentRMS),
+    volt: formatNumber(volts),
+    current: formatNumber(current),
     resistance: config.resistance,
-    power:formatNumber( config.powerRMS),
+    power: formatNumber(config.powerRMS),
   };
 
-  const voltsPeak = getVoltPeakFromVoltsRMS(
-    Number(rmsValue.volt),
-    dinamicDB
-  );
+  const voltsPeak = getVoltPeakFromVoltsRMS(Number(rmsValue.volt), dinamicDB);
   const currentPeak = getCurrentByvoltsResistance(voltsPeak, config.resistance);
 
   const peakValue = {
     volt: formatNumber(voltsPeak),
     current: formatNumber(currentPeak),
     resistance: config.resistance,
-    power: formatNumber(voltsPeak*currentPeak),
+    power: formatNumber(voltsPeak * currentPeak),
   };
 
   return {
     rms: rmsValue,
-    peak: peakValue
-  }
+    peak: peakValue,
+  };
 }
 
-function formatNumber(value: number){
-    return Number(value).toFixed(3)
+function formatNumber(value: number) {
+  return Number(value).toFixed(3);
 }
 
-
-export type calculateValuesRMSPeakType =  { rms: { volt: string; current: string; resistance: number; power: string; }; peak: { volt: string; current: string; resistance: number; power: string; }; }
+export type calculateValuesRMSPeakType = {
+  rms: { volt: string; current: string; resistance: number; power: string };
+  peak: { volt: string; current: string; resistance: number; power: string };
+};

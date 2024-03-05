@@ -10,6 +10,7 @@ import { SharedContent } from "./components/SharedContent";
 import { buildTemplateStringShared } from "./helpers";
 import { TagHeadManager } from "tools/components/TagHeadManager";
 import { CONFIG_APP } from ".";
+import { InputRadioText } from "./components/InputRadioText";
 
 const selectOptions = [
   {
@@ -35,6 +36,7 @@ export type ResultType = {
 export const InitialPage: React.FC = () => {
   const [power, setPower] = useState(0);
   const [resistance, setresistance] = useState(1);
+  const [powerType, setPowerType] = useState('rms');
   const [crestFactor, setCrestFactor] = useState(3);
   const [units, setUnits] = useState<ResultType | null>(null);
 
@@ -44,7 +46,8 @@ export const InitialPage: React.FC = () => {
     const resultFromService = calculateValuesRMSPeak(
       power,
       resistance,
-      crestFactor
+      crestFactor,
+      powerType
     );
 
     setUnits({
@@ -107,15 +110,22 @@ export const InitialPage: React.FC = () => {
           </h3>
         </TitleApp>
         <Form onSubmit={handleSubmit}>
-          <FormGroup
-            name="potenciaRMS"
-            label="Potência RMS:"
-            suffix="Watts"
-            type="number"
-            min="0"
-            value={power}
-            onChange={(e) => setPower(Number(e.target.value))}
-          />
+
+            <InputRadioText 
+              name="potenciaType"
+              label="Potência:"
+              suffix="Watts"
+              valueRadio={powerType}
+              onChangeRadio={(value)=> setPowerType(value)}
+              radiosButtons={[
+                {label: "RMS", value: "rms"},
+                {label: "Pico", value: "pico"},
+              ]}
+              onChange={(ev)=>setPower(Number(ev.target.value ?? 0))}
+              value={power}
+              type="number"
+              min={0}
+            />
 
           <FormGroup
             name="Resistência"
@@ -157,7 +167,7 @@ const Form = styled.form`
   border: 1px solid ${(props) => props.theme["gray-100"]};
   border-radius: ${(props) => props.theme["border-radius"]};
   padding-bottom: ${(props) => props.theme["padding-bottom"]};
-  width: 50%;
+  width: 70%;
   max-width: 500px;
 
   @media only screen and (max-width: ${(props) => props.theme.breakPoints.tablet}) {

@@ -77,8 +77,9 @@ export const theme = {
   "large-icon-size": 60,
 
   breakPoints:{
+    smartphone: "400px",
     tablet: "600px",
-    smartphone: "400px"
+    "large-tablet": "990px"
   }
 ,
 };
