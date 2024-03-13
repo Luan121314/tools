@@ -1,29 +1,29 @@
-import React, { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const useGoogleAnalytics = (id: string) => {
-  const isDevelopment = process.env.NODE_ENV === "development";
+    const isDevelopment = process.env.NODE_ENV === 'development';
 
-  useEffect(() => {
-    if (isDevelopment) return;
+    useEffect(() => {
+        if (isDevelopment) return;
 
-    const script = document.createElement("script");
+        const script = document.createElement('script');
 
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-    script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+        script.async = true;
 
-    document.head.appendChild(script);
+        document.head.appendChild(script);
 
-    return () => {
-      !isDevelopment && document.head.removeChild(script);
-    };
-  }, []);
+        return () => {
+            !isDevelopment && document.head.removeChild(script);
+        };
+    }, []);
 
-  useEffect(() => {
-    if (isDevelopment) return;
+    useEffect(() => {
+        if (isDevelopment) return;
 
-    const script = document.createElement("script");
+        const script = document.createElement('script');
 
-    script.textContent = `
+        script.textContent = `
    window.dataLayer = window.dataLayer || [];
    function gtag() {
      dataLayer.push(arguments);
@@ -33,10 +33,10 @@ export const useGoogleAnalytics = (id: string) => {
    gtag("config", "${id}");
    `;
 
-    document.head.appendChild(script);
+        document.head.appendChild(script);
 
-    return () => {
-      !isDevelopment && document.head.removeChild(script);
-    };
-  }, []);
+        return () => {
+            !isDevelopment && document.head.removeChild(script);
+        };
+    }, []);
 };
