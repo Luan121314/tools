@@ -8,6 +8,7 @@ type TagHeadManagerType = {
     keywords?: Array<string>;
     isMainPage?: boolean;
     image?: string;
+    route?: string;
 };
 
 export const TagHeadManager: React.FC<TagHeadManagerType> = (props) => {
@@ -65,7 +66,7 @@ export const TagHeadManager: React.FC<TagHeadManagerType> = (props) => {
     return (
         <>
             <Helmet>
-                <link rel="canonical" href={CONSTANTS.url} />
+                <link rel="canonical" href={CONSTANTS.url + props.route} />
                 <meta property="og:type" content="website"></meta>
             </Helmet>
             <MetaMainPage />

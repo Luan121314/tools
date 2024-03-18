@@ -110,6 +110,7 @@ export const InitialPage: React.FC = () => {
                 title={CONFIG_APP.name}
                 description={CONFIG_APP.description}
                 keywords={CONFIG_APP.keywords}
+                route={CONFIG_APP.route}
             />
             <Container>
                 <TitleApp>

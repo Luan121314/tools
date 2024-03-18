@@ -14,7 +14,7 @@ const ComponentApp: React.FC = () => {
 };
 
 export const CONFIG_APP = {
-    name: '"Calcular potência RMS e Pico"',
+    name: 'Calcular potência RMS e Pico',
     route: '/calculatorPowerRMSPEAK',
     component: ComponentApp,
     description:
