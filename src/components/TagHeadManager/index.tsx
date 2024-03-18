@@ -66,7 +66,7 @@ export const TagHeadManager: React.FC<TagHeadManagerType> = (props) => {
     return (
         <>
             <Helmet>
-                <link rel="canonical" href={CONSTANTS.url + props.route} />
+                <link rel="canonical" href={CONSTANTS.url + props.route || ''} />
                 <meta property="og:type" content="website"></meta>
             </Helmet>
             <MetaMainPage />
