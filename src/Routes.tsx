@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import Main from 'tools/pages/Main';
 import AppService from 'tools/services/appService';
+import { NotFound } from './pages/NotFound';
 
 export function Routes() {
     const appps = AppService.getApps();
@@ -23,6 +24,10 @@ export function Routes() {
         {
             path: '/',
             loader: () => redirect('/main'),
+        },
+        {
+            path: '*',
+            element: <NotFound />,
         },
     ]);
     return <RouterProvider router={routes} />;
