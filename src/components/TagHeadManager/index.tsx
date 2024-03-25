@@ -75,12 +75,23 @@ export const TagHeadManager: React.FC<TagHeadManagerType> = (props) => {
         );
     }
 
-    return (
-        <>
+    function RequiredMetaTag() {
+        return (
             <Helmet>
                 <link rel="canonical" href={CONSTANTS.url + (props.route ?? '')} />
                 <meta property="og:type" content="website"></meta>
+                <meta
+                    property="og:url"
+                    content={CONSTANTS.url + (props.route ?? '')}
+                ></meta>
+                <meta property="og:site_name" content="Lntools"></meta>
             </Helmet>
+        );
+    }
+
+    return (
+        <>
+            <RequiredMetaTag />
             <MetaMainPage />
             <MetaTitle />
             <MetaKeywords />
