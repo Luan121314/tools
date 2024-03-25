@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Header } from 'tools/components/Header';
 import { MainShape } from 'tools/components/MainShape';
+import { TagHeadManager } from 'tools/components/TagHeadManager';
 
 export const NotFound = () => {
     const [timer, setTimer] = useState(5);
@@ -27,6 +28,11 @@ export const NotFound = () => {
 
     return (
         <MainShape>
+            <TagHeadManager
+                title="Página não encontrada"
+                noIndex
+                description="Esta página não foi encontrada, para continuidade do uso do website, será feito o redirecionamento para a página principal"
+            />
             <Header />
             <NotFoundContent>
                 <h1>404 - Página não encontrada</h1>

@@ -9,6 +9,7 @@ type TagHeadManagerType = {
     isMainPage?: boolean;
     image?: string;
     route?: string;
+    noIndex?: boolean;
 };
 
 export const TagHeadManager: React.FC<TagHeadManagerType> = (props) => {
@@ -59,10 +60,21 @@ export const TagHeadManager: React.FC<TagHeadManagerType> = (props) => {
 
         return (
             <Helmet>
-                <meta property="og:image" content={props.image} />
+                <meta property="og:image" content={props.image}></meta>
             </Helmet>
         );
     }
+
+    function NoIndex() {
+        if (!props.noIndex) return null;
+
+        return (
+            <Helmet>
+                <meta name="robots" content="noindex, nofollow"></meta>
+            </Helmet>
+        );
+    }
+
     return (
         <>
             <Helmet>
@@ -74,6 +86,7 @@ export const TagHeadManager: React.FC<TagHeadManagerType> = (props) => {
             <MetaKeywords />
             <MetaDescription />
             <MetaImage />
+            <NoIndex />
         </>
     );
 };
