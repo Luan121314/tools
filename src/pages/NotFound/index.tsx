@@ -32,6 +32,7 @@ export const NotFound = () => {
                 title="Página não encontrada"
                 noIndex
                 description="Esta página não foi encontrada, para continuidade do uso do website, será feito o redirecionamento para a página principal"
+                route="not-found"
             />
             <Header />
             <NotFoundContent>
